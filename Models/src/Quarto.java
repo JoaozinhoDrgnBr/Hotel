@@ -1,79 +1,53 @@
-import java.util.List;
-
-public class Quarto {
+public class Quarto{
+    public enum Status{
+        LIVRE,
+        OCUPADO,
+        LIMPEZA
+    }
+    private Status status;
     private int numero;
-    private String tipo;
     private double preco;
-    private String status;  // "disponível" ou "ocupado"
 
-    // Construtor
-    public Quarto(int numero, String tipo, double preco, String status) {
+    public Quarto(int numero, double preco){
         this.numero = numero;
-        this.tipo = tipo;
         this.preco = preco;
+        this.status = Status.LIVRE;
+    }
+
+
+    public void getDados(){
+        return "Numero: " + this.numero + "Preco: " + this.preco + "Status: " + this.status;
+    }
+
+    public void setStatus(Status status){
         this.status = status;
     }
 
-    // Getters e Setters
-    public int getNumero() {
-        return numero;
+    public Status getStatus(){
+        return this.status;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public int getNumero(){
+        return this.numero;
     }
 
-    public String getTipo() {
-        return tipo;
+    public double getPreco(){
+        return this.preco;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
+    public void setPreco(double preco){
         this.preco = preco;
     }
 
-    public String getStatus() {
-        return status;
+    private void Alugar(){
+        // criar uma reserva e setar o status do quarto para ocupado, e realizar o checkin utiilizando a reserva criada
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    private void CheckOut(){
+        // realizar o checkout e setar o status do quarto para limpeza chamando o pagamento
+    }   
 
-    // Método para verificar disponibilidade
-    public boolean verificarDisponibilidade() {
-        return "disponível".equalsIgnoreCase(this.status);
-    }
-
-    // Método para atualizar o status do quarto
-    public void atualizarStatus(String novoStatus) {
-        this.status = novoStatus;
-    }
-
-    // Métodos estáticos para adicionar e remover quartos de uma lista
-    public static void adicionarQuarto(List<Quarto> quartos, Quarto quarto) {
-        quartos.add(quarto);
-    }
-
-    public static void removerQuarto(List<Quarto> quartos, Quarto quarto) {
-        quartos.remove(quarto);
-    }
-
-    // Método toString para representação do quarto
-    @Override
-    public String toString() {
-        return "Quarto{" +
-                "numero=" + numero +
-                ", tipo='" + tipo + '\'' +
-                ", preco=" + preco +
-                ", status='" + status + '\'' +
-                '}';
+    private void CheckIn(){
+        // realizar o checkin com uma reserva
     }
 }

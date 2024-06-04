@@ -1,88 +1,55 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class Cliente {
-    private int id;
+public class Cliente{
     private String nome;
-    private String endereco;
+    private String cpf;
     private String telefone;
     private String email;
-    private List<Reserva> reservas;
+    
 
-    // Construtor
-    public Cliente(int id, String nome, String endereco, String telefone, String email) {
-        this.id = id;
+    public Cliente(String nome, String cpf, String telefone, String email, String endereco, String cidade, String estado, string cep, string pais){
         this.nome = nome;
-        this.endereco = endereco;
+        this.cpf = cpf;
         this.telefone = telefone;
         this.email = email;
-        this.reservas = new ArrayList<>();
+        
     }
 
-    // Getters e Setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
+    public void setNome(String nome){
         this.nome = nome;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getNome(){
+        return this.nome;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setCpf(String cpf){
+        this.cpf = cpf;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getCpf(){
+        return this.cpf;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(String telefone){
         this.telefone = telefone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getTelefone(){
+        return this.telefone;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email){
         this.email = email;
     }
 
-    public List<Reserva> getReservas() {
-        return reservas;
+    public String getEmail(){
+        return this.email;
     }
 
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
+    public void getDados(){
+        return "Nome: " + this.nome + "CPF: " + this.cpf + "Telefone: " + this.telefone + "Email: " + this.email;
     }
 
-    // Método para fazer uma reserva
-    public void fazerReserva(Reserva reserva) {
-        this.reservas.add(reserva);
-    }
-
-    // Método toString para representação do cliente
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", endereco='" + endereco + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", email='" + email + '\'' +
-                ", reservas=" + reservas +
-                '}';
+    private void Cadastrar(){
+        // cadastrar um cliente no sistema
     }
 }

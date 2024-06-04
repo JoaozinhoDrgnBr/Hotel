@@ -1,102 +1,78 @@
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
-public class Reserva {
-    private int id;
+public class Reserva{
+    public enum Status{
+        PENDENTE,
+        CANCELADO,
+        CHECKIN,
+        CHECKOUT
+    }
     private Cliente cliente;
     private Quarto quarto;
-    private LocalDate dataCheckIn;
-    private LocalDate dataCheckOut;
-    private String status;  // "ativa" ou "cancelada"
+    private Date dataInicio;
+    private Date dataFim;
+    private Status status;
+    private List<Servico> servicos;
 
-    // Construtor
-    public Reserva(int id, Cliente cliente, Quarto quarto, LocalDate dataCheckIn, LocalDate dataCheckOut, String status) {
-        this.id = id;
+    
+    public Reserva(Date dataEntrada, Date dataSaida, Cliente cliente, Quarto quarto){
+        this.dataInicio = dataEntrada;
+        this.dataFim = dataSaida;
         this.cliente = cliente;
         this.quarto = quarto;
-        this.dataCheckIn = dataCheckIn;
-        this.dataCheckOut = dataCheckOut;
+        this.status = Status.PENDENTE;
+    }
+
+    public void setDataEntrada(String dataEntrada){
+        this.dataInicio = dataEntrada;
+    }
+
+    public String getDataEntrada(){
+        return this.dataInicio;
+    }
+
+    public void setDataSaida(String dataSaida){
+        this.dataFim = dataSaida;
+    }
+
+    public String getDataSaida(){
+        return this.dataFim;
+    }
+
+    public void setCliente(Cliente cliente){
+        this.cliente = cliente;
+    }
+
+    public Cliente getCliente(){
+        return this.cliente;
+    }
+
+    public void setQuarto(Quarto quarto){
+        this.quarto = quarto;
+    }
+
+    public Quarto getQuarto(){
+        return this.quarto;
+    }
+
+    public void setStatus(Status status){
         this.status = status;
     }
 
-    // Getters e Setters
-    public int getId() {
-        return id;
+    public Status getStatus(){
+        return this.status;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void getDados(){
+        return "Data de Entrada: " + this.dataInicio + "Data de Saida: " + this.dataFim + "Cliente: " + this.cliente.getNome() + "Quarto: " + this.quarto.getNumero() + "Status: " + this.status;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    private void CancelarReserva(){
+        // cancelar uma reserva e setar o status para cancelado e o status do quarto para livre
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Quarto getQuarto() {
-        return quarto;
-    }
-
-    public void setQuarto(Quarto quarto) {
-        this.quarto = quarto;
-    }
-
-    public LocalDate getDataCheckIn() {
-        return dataCheckIn;
-    }
-
-    public void setDataCheckIn(LocalDate dataCheckIn) {
-        this.dataCheckIn = dataCheckIn;
-    }
-
-    public LocalDate getDataCheckOut() {
-        return dataCheckOut;
-    }
-
-    public void setDataCheckOut(LocalDate dataCheckOut) {
-        this.dataCheckOut = dataCheckOut;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    // Método para confirmar a reserva
-    public void confirmarReserva() {
-        this.status = "ativa";
-    }
-
-    // Método para cancelar a reserva
-    public void cancelarReserva() {
-        this.status = "cancelada";
-    }
-
-    // Métodos estáticos para adicionar e remover reservas de uma lista
-    public static void adicionarReserva(List<Reserva> reservas, Reserva reserva) {
-        reservas.add(reserva);
-    }
-
-    public static void removerReserva(List<Reserva> reservas, Reserva reserva) {
-        reservas.remove(reserva);
-    }
-
-    // Método toString para representação da reserva
-    @Override
-    public String toString() {
-        return "Reserva{" +
-                "id=" + id +
-                ", cliente=" + cliente +
-                ", quarto=" + quarto +
-                ", dataCheckIn=" + dataCheckIn +
-                ", dataCheckOut=" + dataCheckOut +
-                ", status='" + status + '\'' +
-                '}';
+    private void ConfirmarReserva(){
+        // confirmar uma reserva e setar o status para checkin e o status do quarto para ocupado
     }
 }

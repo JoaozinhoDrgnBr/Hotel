@@ -1,84 +1,70 @@
-import java.time.LocalDate;
+import java.util.Date;
 
-public class Pagamento {
-    private int id;
-    private double valor;
-    private String metodoPagamento;
-    private LocalDate data;
-    private String status;
+public class Pagamento{
+    public enum Status{
+        PENDENTE,
+        PAGO,
+        CANCELADO
+    }
+    private double preco;
+    private Cliente cliente;
+    private Status status;
+    private Date data;
+    private Reserva reserva;
 
-    // Construtor
-    public Pagamento(int id, double valor, String metodoPagamento, LocalDate data, String status) {
-        this.id = id;
-        this.valor = valor;
-        this.metodoPagamento = metodoPagamento;
-        this.data = data;
+    public Pagamento(double preco, Cliente cliente, Reserva reserva){
+        this.preco = preco;
+        this.cliente = cliente;
+        this.reserva = reserva;
+        this.status = Status.PENDENTE;
+        this.data = new Date();
+    }
+
+    public void setPreco(double preco){
+        this.preco = preco;
+    }
+
+    public double getPreco(){
+        return this.preco;
+    }
+
+    public void setCliente(Cliente cliente){
+        this.cliente = cliente;
+    }
+
+    public Cliente getCliente(){
+        return this.cliente;
+    }
+
+    public void setStatus(Status status){
         this.status = status;
     }
 
-    // Getters e Setters
-    public int getId() {
-        return id;
+    public Status getStatus(){
+        return this.status;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
-    public String getMetodoPagamento() {
-        return metodoPagamento;
-    }
-
-    public void setMetodoPagamento(String metodoPagamento) {
-        this.metodoPagamento = metodoPagamento;
-    }
-
-    public LocalDate getData() {
-        return data;
-    }
-
-    public void setData(LocalDate data) {
+    public void setData(Date data){
         this.data = data;
     }
 
-    public String getStatus() {
-        return status;
+    public Date getData(){
+        return this.data;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setReserva(Reserva reserva){
+        this.reserva = reserva;
     }
 
-    // Método para processar o pagamento
-    public void processarPagamento() {
-        this.status = "processado";
+    public Reserva getReserva(){
+        return this.reserva;
     }
 
-    // Método para emitir o recibo
-    public void emitirRecibo() {
-        System.out.println("Recibo do Pagamento #" + id);
-        System.out.println("Data: " + data);
-        System.out.println("Valor: " + valor);
-        System.out.println("Método de Pagamento: " + metodoPagamento);
+    private void getDados(){
+        return "Preco: " + this.preco + "Cliente: " + this.cliente.getNome() + "Status: " + this.status + "Data: " + this.data + "Reserva: " + this.reserva.getDados();
     }
 
-    // Método toString para representação do pagamento
-    @Override
-    public String toString() {
-        return "Pagamento{" +
-                "id=" + id +
-                ", valor=" + valor +
-                ", metodoPagamento='" + metodoPagamento + '\'' +
-                ", data=" + data +
-                ", status='" + status + '\'' +
-                '}';
+    private void Pagar(){
+        // realizar o pagamento
     }
 }
