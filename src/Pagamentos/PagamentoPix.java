@@ -1,6 +1,6 @@
-package Pagamentos;
+package src.Pagamentos;
 
-import Interfaces.PagamentoStrategy;
+import src.Interfaces.PagamentoStrategy;
 
 public class PagamentoPix implements PagamentoStrategy {
     @Override

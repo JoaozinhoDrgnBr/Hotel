@@ -21,4 +21,9 @@ public class Disponivel implements Estado {
     public void Checkout(Quarto quarto) {
         System.out.println("O quarto não está ocupado.");
     }
+
+    @Override
+    public String GetEstado() {
+        return "Disponível";
+    }
 }

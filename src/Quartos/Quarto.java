@@ -16,15 +16,15 @@ public class Quarto{
 
 
     public String getDados(){
-        return ("Numero: " + this.numero + "Preco: " + this.preco + "Status: " + this.estado);
+        return ("Numero: " + this.numero + " Preco: " + this.preco + " Status: " + estado.GetEstado());
     }
 
     public void setEstado(Estado e){
         this.estado = e;
     }
 
-    public Estado getStatus(){
-        return this.estado;
+    public String getStatus(){
+        return estado.GetEstado();
     }
 
     public int getNumero(){

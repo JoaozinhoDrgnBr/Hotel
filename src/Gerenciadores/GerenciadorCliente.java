@@ -18,8 +18,7 @@ public class GerenciadorCliente {
         boolean erro = false;
         while (!sair) {
             //limpa a tela
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+            utils.LimparTela();
             if (erro) {
                 System.out.println("Opção inválida, tente novamente");
             }
@@ -66,8 +65,7 @@ public class GerenciadorCliente {
         boolean erro = false;
         while (!erro) {
             //limpa a tela
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+            utils.LimparTela();
             try {
                 System.out.println("Cadastro de Cliente");
                 System.out.println("Digite o nome do cliente:");
@@ -82,7 +80,7 @@ public class GerenciadorCliente {
                     Cliente cliente = new Cliente(nome, cpf, telefone, email);
                     clientesList.add(cliente);
                     System.out.println("Cliente cadastrado com sucesso");
-                    utils.enter();
+                    utils.Enter();
                     erro = true;
                 } catch (Exception e) {
                     System.out.println("Erro ao cadastrar cliente, tente novamente");
@@ -91,7 +89,7 @@ public class GerenciadorCliente {
                 }
             } catch (Exception e) {
                 System.out.println("Erro ao cadastrar cliente, tente novamente");
-                utils.enter();
+                utils.Enter();
             }
         }
     }
@@ -99,13 +97,12 @@ public class GerenciadorCliente {
     // Listar Clientes
     public void ListarClientes() {
         //limpa a tela
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        utils.LimparTela();
         try {
             //verificar se a lista de clientes está vazia
             if (clientesList.isEmpty()) {
                 System.out.println("Nenhum cliente cadastrado");
-                utils.enter();
+                utils.Enter();
                 return;
             }
             System.out.println("Lista de Clientes");
@@ -116,11 +113,11 @@ public class GerenciadorCliente {
                 System.out.println("Telefone: " + clientesList.get(i).getTelefone());
                 System.out.println("Email: " + clientesList.get(i).getEmail());
                 System.out.println("-------------------------------------------------");
-                utils.enter();
+                utils.Enter();
             }
         } catch (Exception e) {
             System.out.println("Ocorreu um erro ao listar os clientes, tente novamente");
-            utils.enter();
+            utils.Enter();
         }
     }
 
@@ -129,8 +126,7 @@ public class GerenciadorCliente {
         boolean erro = false;
         while (!erro) {
             //limpa a tela
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+            utils.LimparTela();
             try {
                 System.out.println("Editar Cliente");
                 System.out.println("Digite o CPF do cliente que deseja editar:");
@@ -151,22 +147,22 @@ public class GerenciadorCliente {
                             clientesList.get(i).setTelefone(telefone);
                             clientesList.get(i).setEmail(email);
                             System.out.println("Cliente editado com sucesso");
-                            utils.enter();
+                            utils.Enter();
                             erro = true;
                         } catch (Exception e) {
                             System.out.println("Erro ao editar cliente, tente novamente");
-                            utils.enter();
+                            utils.Enter();
                         }
                     }
                 }
                 if (!erro) {
                     System.out.println("Cliente não encontrado");
-                    utils.enter();
+                    utils.Enter();
                     erro = true;
                 }
             } catch (Exception e) {
                 System.out.println("Erro ao editar cliente, tente novamente");
-                utils.enter();
+                utils.Enter();
             }
         }
     }
@@ -176,8 +172,7 @@ public class GerenciadorCliente {
         boolean erro = false;
         while (!erro) {
             //limpa a tela
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+            utils.LimparTela();
             try {
                 System.out.println("Excluir Cliente");
                 System.out.println("Digite o CPF do cliente que deseja excluir:");
@@ -186,18 +181,18 @@ public class GerenciadorCliente {
                     if (clientesList.get(i).getCpf().equals(cpf)) {
                         clientesList.remove(i);
                         System.out.println("Cliente excluído com sucesso");
-                        utils.enter();
+                        utils.Enter();
                         erro = true;
                     }
                 }
                 if (!erro) {
                     System.out.println("Cliente não encontrado");
-                    utils.enter();
+                    utils.Enter();
                     erro = true;
                 }
             } catch (Exception e) {
                 System.out.println("Erro ao excluir cliente, tente novamente");
-                utils.enter();
+                utils.Enter();
             }
         }
     }

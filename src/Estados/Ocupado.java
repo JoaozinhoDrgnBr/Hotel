@@ -1,7 +1,7 @@
 package src.Estados;
 
-import src.Quartos.Quarto;
 import src.Interfaces.Estado;
+import src.Quartos.Quarto;
 
 public class Ocupado implements Estado {
     @Override
@@ -19,5 +19,10 @@ public class Ocupado implements Estado {
     public void Checkout(Quarto quarto) {
         System.out.println("Quarto agora se encontra disonível.");
         quarto.setEstado(new Disponivel());
+    }
+
+    @Override
+    public String GetEstado() {
+        return "Ocupado";
     }
 }
