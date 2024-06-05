@@ -1,3 +1,5 @@
+package src.Quartos;
+
 public class Quarto{
     public enum Status{
         LIVRE,
@@ -15,7 +17,7 @@ public class Quarto{
     }
 
 
-    public void getDados(){
+    public String getDados(){
         return "Numero: " + this.numero + "Preco: " + this.preco + "Status: " + this.status;
     }
 
@@ -51,3 +53,6 @@ public class Quarto{
         // realizar o checkin com uma reserva
     }
 }
+
+
+

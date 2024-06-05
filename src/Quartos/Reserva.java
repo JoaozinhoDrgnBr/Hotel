@@ -1,7 +1,9 @@
-import java.util.Date;
-import java.util.List;
+package src.Quartos;
 
-public class Reserva{
+import src.Interfaces.IReserva;
+import src.Pessoa.Cliente;
+
+public class Reserva implements IReserva{
     public enum Status{
         PENDENTE,
         CANCELADO,
@@ -10,18 +12,18 @@ public class Reserva{
     }
     private Cliente cliente;
     private Quarto quarto;
-    private Date dataInicio;
-    private Date dataFim;
+    private String dataInicio;
+    private String dataFim;
     private Status status;
-    private List<Servico> servicos;
-
+    private double custo;
     
-    public Reserva(Date dataEntrada, Date dataSaida, Cliente cliente, Quarto quarto){
+    public Reserva(String dataEntrada, String dataSaida, Cliente cliente, Quarto quarto){
         this.dataInicio = dataEntrada;
         this.dataFim = dataSaida;
         this.cliente = cliente;
         this.quarto = quarto;
         this.status = Status.PENDENTE;
+        this.custo = quarto.getPreco();
     }
 
     public void setDataEntrada(String dataEntrada){
@@ -64,8 +66,16 @@ public class Reserva{
         return this.status;
     }
 
-    public void getDados(){
-        return "Data de Entrada: " + this.dataInicio + "Data de Saida: " + this.dataFim + "Cliente: " + this.cliente.getNome() + "Quarto: " + this.quarto.getNumero() + "Status: " + this.status;
+    @Override 
+    public String GetDescricao(){
+        // retornar a descrição da reserva
+        return "Reserva do quarto " + this.quarto.getNumero() + " para o cliente " + this.cliente.getNome();
+    }
+
+    @Override
+    public double GetCusto(){
+        // retornar o custo da reserva
+        return this.custo;
     }
 
     private void CancelarReserva(){

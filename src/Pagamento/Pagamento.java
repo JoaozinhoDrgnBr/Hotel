@@ -1,4 +1,7 @@
-import java.util.Date;
+package src.Pagamento;
+
+import src.Pessoa.Cliente;
+import src.Quartos.Reserva;
 
 public class Pagamento{
     public enum Status{
@@ -9,7 +12,7 @@ public class Pagamento{
     private double preco;
     private Cliente cliente;
     private Status status;
-    private Date data;
+    private String data;
     private Reserva reserva;
 
     public Pagamento(double preco, Cliente cliente, Reserva reserva){
@@ -17,7 +20,7 @@ public class Pagamento{
         this.cliente = cliente;
         this.reserva = reserva;
         this.status = Status.PENDENTE;
-        this.data = new Date();
+        this.data = new String();
     }
 
     public void setPreco(double preco){
@@ -44,11 +47,11 @@ public class Pagamento{
         return this.status;
     }
 
-    public void setData(Date data){
+    public void setData(String data){
         this.data = data;
     }
 
-    public Date getData(){
+    public String getData(){
         return this.data;
     }
 
@@ -60,8 +63,8 @@ public class Pagamento{
         return this.reserva;
     }
 
-    private void getDados(){
-        return "Preco: " + this.preco + "Cliente: " + this.cliente.getNome() + "Status: " + this.status + "Data: " + this.data + "Reserva: " + this.reserva.getDados();
+    private String getDados(){
+        return "Preco: " + this.preco + "Cliente: " + this.cliente.getNome() + "Status: " + this.status + "Data: " + this.data + "Reserva: " + this.reserva.GetDescricao();
     }
 
     private void Pagar(){
