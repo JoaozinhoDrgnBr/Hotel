@@ -267,4 +267,14 @@ public class GerenciadorReserva {
         }
 
     }
+
+    // Buscar reserva por CPF
+    public IReserva GetReservaPorCpf(String cpf) {
+        for (IReserva reserva : reservasList) {
+            if (reserva.GetCliente().getCpf().equals(cpf)) {
+                return reserva;
+            }
+        }
+        return null;
+    }
 }

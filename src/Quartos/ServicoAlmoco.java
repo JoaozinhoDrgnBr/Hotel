@@ -34,5 +34,10 @@ public class ServicoAlmoco extends DecoReserva {
     public Quarto GetQuarto() {
         return reserva.GetQuarto();
     }
+
+    @Override
+    public void SetStatus(IReserva.Status status) {
+        reserva.SetStatus(status);
+    }
     
 }

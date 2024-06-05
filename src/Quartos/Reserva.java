@@ -5,12 +5,7 @@ import src.Pessoa.Cliente;
 
 public class Reserva implements IReserva {
 
-    public enum Status {
-        PENDENTE,
-        CANCELADO,
-        CHECKIN,
-        CHECKOUT;
-    }
+    
     private Cliente cliente;
     private Quarto quarto;
     private String dataInicio;
@@ -39,14 +34,6 @@ public class Reserva implements IReserva {
         this.dataFim = dataSaida;
     }
 
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
     public String getDataSaida() {
         return this.dataFim;
     }
@@ -68,7 +55,7 @@ public class Reserva implements IReserva {
         return this.quarto;
     }
 
-    public void setStatus(Status status) {
+    public void SetStatus(Status status) {
         this.status = status;
     }
 
@@ -89,5 +76,6 @@ public class Reserva implements IReserva {
     public double GetCusto() {
         return this.preco;
     }
+
 
 }

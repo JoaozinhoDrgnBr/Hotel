@@ -73,7 +73,7 @@ public class Pagamento extends Observable {
         return "Preco: " + this.preco + "Cliente: " + this.cliente.getNome() + "Status: " + this.status + "Data: " + this.data + "Reserva: " + this.reserva.GetDados();
     }
 
-    private void Pagar(){
-        strategy.Pagar(reserva.getPreco());
+    public void Pagar(){
+        strategy.Pagar(preco);
     }
 }
