@@ -3,10 +3,9 @@ package src.Quartos;
 import src.Interfaces.IReserva;
 import src.Pessoa.Cliente;
 
-public class Reserva implements IReserva{
+public class Reserva implements IReserva {
 
-
-    public enum Status{
+    public enum Status {
         PENDENTE,
         CANCELADO,
         CHECKIN,
@@ -19,23 +18,24 @@ public class Reserva implements IReserva{
     private Status status;
     private double preco;
 
-    public Reserva(String dataEntrada, String dataSaida, Cliente cliente, Quarto quarto){
+    public Reserva(String dataEntrada, String dataSaida, Cliente cliente, Quarto quarto, double preco) {
         this.dataInicio = dataEntrada;
         this.dataFim = dataSaida;
         this.cliente = cliente;
         this.quarto = quarto;
         this.status = Status.PENDENTE;
+        this.preco = preco;
     }
 
-    public void setDataEntrada(String dataEntrada){
+    public void setDataEntrada(String dataEntrada) {
         this.dataInicio = dataEntrada;
     }
 
-    public String getDataEntrada(){
+    public String getDataEntrada() {
         return this.dataInicio;
     }
 
-    public void setDataSaida(String dataSaida){
+    public void setDataSaida(String dataSaida) {
         this.dataFim = dataSaida;
     }
 
@@ -47,36 +47,37 @@ public class Reserva implements IReserva{
         this.preco = preco;
     }
 
-    public String getDataSaida(){
+    public String getDataSaida() {
         return this.dataFim;
     }
 
-    public void setCliente(Cliente cliente){
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    public Cliente getCliente(){
+    @Override
+    public Cliente GetCliente() {
         return this.cliente;
     }
 
-    public void setQuarto(Quarto quarto){
+    public void setQuarto(Quarto quarto) {
         this.quarto = quarto;
     }
 
-    public Quarto getQuarto(){
+    public Quarto GetQuarto() {
         return this.quarto;
     }
 
-    public void setStatus(Status status){
+    public void setStatus(Status status) {
         this.status = status;
     }
 
-    public Status getStatus(){
-        return this.status;
+    public String getStatus() {
+        return this.status.toString();
     }
 
-    public String getDados(){
-        return ("Data de Entrada: " + this.dataInicio + "Data de Saida: " + this.dataFim + "Cliente: " + this.cliente.getNome() + "Quarto: " + this.quarto.getNumero() + "Status: " + this.status);
+    public String GetDados() {
+        return ("-Data de Entrada: " + this.dataInicio + " -Data de Saida: " + this.dataFim + " -Cliente: " + this.cliente.getNome() + " -Quarto: " + this.quarto.getNumero() + " -Status: " + this.getStatus() + " -Preço: " + this.preco);
     }
 
     @Override
@@ -88,4 +89,5 @@ public class Reserva implements IReserva{
     public double GetCusto() {
         return this.preco;
     }
+
 }

@@ -1,8 +1,8 @@
 package src.Pagamentos;
 
+import src.Interfaces.PagamentoStrategy;
 import src.Observer.Observable;
 import src.Pessoa.Cliente;
-import src.Interfaces.PagamentoStrategy;
 import src.Quartos.Reserva;
 
 public class Pagamento extends Observable {
@@ -70,7 +70,7 @@ public class Pagamento extends Observable {
     }
 
     private String getDados(){
-        return "Preco: " + this.preco + "Cliente: " + this.cliente.getNome() + "Status: " + this.status + "Data: " + this.data + "Reserva: " + this.reserva.getDados();
+        return "Preco: " + this.preco + "Cliente: " + this.cliente.getNome() + "Status: " + this.status + "Data: " + this.data + "Reserva: " + this.reserva.GetDados();
     }
 
     private void Pagar(){

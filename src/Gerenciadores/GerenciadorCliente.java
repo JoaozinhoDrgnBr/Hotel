@@ -26,7 +26,7 @@ public class GerenciadorCliente {
             System.out.println("1 - Cadastrar Cliente");
             System.out.println("2 - Listar Clientes");
             System.out.println("3 - Editar Cliente");
-            System.err.println("4 - Excluir Cliente");
+            System.out.println("4 - Excluir Cliente");
             System.out.println("0 - Voltar");
             int opcao = 0;
             try {
@@ -85,7 +85,7 @@ public class GerenciadorCliente {
                 } catch (Exception e) {
                     System.out.println("Erro ao cadastrar cliente, tente novamente");
                     System.out.println("Pressione enter para continuar");
-                    Scanner scanner = new Scanner(System.in);
+                    utils.Enter();
                 }
             } catch (Exception e) {
                 System.out.println("Erro ao cadastrar cliente, tente novamente");
@@ -195,5 +195,15 @@ public class GerenciadorCliente {
                 utils.Enter();
             }
         }
+    }
+
+    //Procurar um cliente pelo cpf
+    public Cliente BuscarClientePorCPF(String cpf) {
+        for (int i = 0; i < clientesList.size(); i++) {
+            if (clientesList.get(i).getCpf().equals(cpf)) {
+                return clientesList.get(i);
+            }
+        }
+        return null;
     }
 }

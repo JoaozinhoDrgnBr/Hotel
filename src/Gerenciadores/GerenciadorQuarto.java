@@ -11,7 +11,6 @@ public class GerenciadorQuarto {
     public ArrayList<Quarto> quartosList = new ArrayList<Quarto>();
     private Utils util = new Utils();
     private int opcao;
-    private Scanner scanner = new Scanner(System.in);
 
     // Menu de gerenciamento de quartos
     public void MenuQuarto() {
@@ -23,19 +22,17 @@ public class GerenciadorQuarto {
             util.LimparTela();
             if (erro) {
                 System.out.println("Opção inválida, tente novamente");
-                erro = false;
-                util.Enter();
             }
             //limpa a tela
             System.out.println("Menu de gerenciamento de quartos");
             System.out.println("1 - Adicionar quarto");
             System.out.println("2 - Remover quarto");
             System.out.println("3 - Listar quartos");
-            System.out.println("4 - Voltar");
+            System.out.println("0 - Voltar");
             System.out.print("Escolha uma opção: ");
 
             try {
-                opcao = scanner.nextInt();
+                opcao = Integer.parseInt(System.console().readLine());
                 //verificar se o usuário digitou um número
                 switch (opcao) {
                     case 1:
@@ -47,7 +44,7 @@ public class GerenciadorQuarto {
                     case 3:
                         ListarQuartos();
                         break;
-                    case 4:
+                    case 0:
                         sair = true;
                         break;
                     default:
@@ -79,7 +76,7 @@ public class GerenciadorQuarto {
                 System.out.println("Adicionar quarto");
                 try {
                     System.out.print("Digite o número do quarto: ");
-                    numero = scanner.nextInt();
+                    numero = Integer.parseInt(System.console().readLine());
                     for (Quarto quarto : quartosList) {
                         if (quarto.getNumero() == numero) {
                             System.out.println("Quarto já cadastrado!");
@@ -91,23 +88,20 @@ public class GerenciadorQuarto {
                 } catch (Exception e) {
                     System.out.println("Número inválido!");
                     util.Enter();
-                    sair = true;
                     break;
                 }
 
                 try {
                     System.out.print("Digite o valor da diária: ");
-                    valorDiaria = scanner.nextDouble();
+                    valorDiaria = Double.parseDouble(System.console().readLine());
                     if (valorDiaria <= 0) {
                         System.out.println("Valor inválido!");
                         util.Enter();
-                        sair = true;
                         break;
                     }
                 } catch (Exception e) {
                     System.out.println("Valor inválido!");
                     util.Enter();
-                    sair = true;
                     break;
                 }
 
@@ -144,7 +138,7 @@ public class GerenciadorQuarto {
                 System.out.println("Remover quarto");
                 System.out.print("Digite o número do quarto: ");
                 try {
-                    int numero = scanner.nextInt();
+                    int numero = Integer.parseInt(System.console().readLine());
                     for (Quarto quarto : quartosList) {
                         if (quarto.getNumero() == numero) {
                             quartosList.remove(quarto);
@@ -184,6 +178,15 @@ public class GerenciadorQuarto {
             }
             util.Enter();
         }
+    }
+
+    public Quarto BuscarQuartoPorNumero(int numero) {
+        for (Quarto quarto : quartosList) {
+            if (quarto.getNumero() == numero) {
+                return quarto;
+            }
+        }
+        return null;
     }
 
 }

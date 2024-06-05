@@ -44,7 +44,7 @@ public class Main {
                         gerenciadorQuarto.MenuQuarto();
                         break;
                     case 2:
-                        gerenciadorReserva.MenuReserva();
+                        gerenciadorReserva.MenuReserva(gerenciadorCliente, gerenciadorQuarto);
                         break;
                     case 3:
                         gerenciadorPagamento.MenuPagamento();
