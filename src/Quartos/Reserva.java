@@ -4,26 +4,27 @@ import src.Interfaces.IReserva;
 import src.Pessoa.Cliente;
 
 public class Reserva implements IReserva{
+
+
     public enum Status{
         PENDENTE,
         CANCELADO,
         CHECKIN,
-        CHECKOUT
+        CHECKOUT;
     }
     private Cliente cliente;
     private Quarto quarto;
     private String dataInicio;
     private String dataFim;
     private Status status;
-    private double custo;
-    
+    private double preco;
+
     public Reserva(String dataEntrada, String dataSaida, Cliente cliente, Quarto quarto){
         this.dataInicio = dataEntrada;
         this.dataFim = dataSaida;
         this.cliente = cliente;
         this.quarto = quarto;
         this.status = Status.PENDENTE;
-        this.custo = quarto.getPreco();
     }
 
     public void setDataEntrada(String dataEntrada){
@@ -36,6 +37,14 @@ public class Reserva implements IReserva{
 
     public void setDataSaida(String dataSaida){
         this.dataFim = dataSaida;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
     public String getDataSaida(){
@@ -66,23 +75,17 @@ public class Reserva implements IReserva{
         return this.status;
     }
 
-    @Override 
-    public String GetDescricao(){
-        // retornar a descrição da reserva
+    public String getDados(){
+        return ("Data de Entrada: " + this.dataInicio + "Data de Saida: " + this.dataFim + "Cliente: " + this.cliente.getNome() + "Quarto: " + this.quarto.getNumero() + "Status: " + this.status);
+    }
+
+    @Override
+    public String GetDescricao() {
         return "Reserva do quarto " + this.quarto.getNumero() + " para o cliente " + this.cliente.getNome();
     }
 
     @Override
-    public double GetCusto(){
-        // retornar o custo da reserva
-        return this.custo;
-    }
-
-    private void CancelarReserva(){
-        // cancelar uma reserva e setar o status para cancelado e o status do quarto para livre
-    }
-
-    private void ConfirmarReserva(){
-        // confirmar uma reserva e setar o status para checkin e o status do quarto para ocupado
+    public double GetCusto() {
+        return this.preco;
     }
 }

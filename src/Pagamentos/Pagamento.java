@@ -1,8 +1,8 @@
-package src.Pagamento;
+package src.Pagamentos;
 
 import src.Pessoa.Cliente;
 import src.Quartos.Reserva;
-
+import src.Interfaces.PagamentoStrategy;
 public class Pagamento{
     public enum Status{
         PENDENTE,
@@ -14,13 +14,15 @@ public class Pagamento{
     private Status status;
     private String data;
     private Reserva reserva;
+    private PagamentoStrategy strategy;
 
-    public Pagamento(double preco, Cliente cliente, Reserva reserva){
+    public Pagamento(double preco, Cliente cliente, Reserva reserva, String data, PagamentoStrategy strategy){
         this.preco = preco;
         this.cliente = cliente;
         this.reserva = reserva;
         this.status = Status.PENDENTE;
-        this.data = new String();
+        this.data = data;
+        this.strategy = strategy;
     }
 
     public void setPreco(double preco){
@@ -64,10 +66,10 @@ public class Pagamento{
     }
 
     private String getDados(){
-        return "Preco: " + this.preco + "Cliente: " + this.cliente.getNome() + "Status: " + this.status + "Data: " + this.data + "Reserva: " + this.reserva.GetDescricao();
+        return "Preco: " + this.preco + "Cliente: " + this.cliente.getNome() + "Status: " + this.status + "Data: " + this.data + "Reserva: " + this.reserva.getDados();
     }
 
     private void Pagar(){
-        // realizar o pagamento
+        strategy.Pagar(reserva.getPreco());
     }
 }

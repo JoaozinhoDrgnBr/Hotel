@@ -1,32 +1,30 @@
 package src.Quartos;
 
+import src.Estados.Disponivel;
+import src.Interfaces.Estado;
+
 public class Quarto{
-    public enum Status{
-        LIVRE,
-        OCUPADO,
-        LIMPEZA
-    }
-    private Status status;
+    private Estado estado;
     private int numero;
     private double preco;
 
     public Quarto(int numero, double preco){
         this.numero = numero;
         this.preco = preco;
-        this.status = Status.LIVRE;
+        this.estado = new Disponivel();
     }
 
 
     public String getDados(){
-        return "Numero: " + this.numero + "Preco: " + this.preco + "Status: " + this.status;
+        return ("Numero: " + this.numero + "Preco: " + this.preco + "Status: " + this.estado);
     }
 
-    public void setStatus(Status status){
-        this.status = status;
+    public void setEstado(Estado e){
+        this.estado = e;
     }
 
-    public Status getStatus(){
-        return this.status;
+    public Estado getStatus(){
+        return this.estado;
     }
 
     public int getNumero(){
@@ -42,17 +40,14 @@ public class Quarto{
     }
 
     private void Alugar(){
-        // criar uma reserva e setar o status do quarto para ocupado, e realizar o checkin utiilizando a reserva criada
+        estado.Alugar(this);
     }
 
     private void CheckOut(){
-        // realizar o checkout e setar o status do quarto para limpeza chamando o pagamento
+        estado.Checkout(this);
     }   
 
     private void CheckIn(){
-        // realizar o checkin com uma reserva
+        estado.Checkin(this);
     }
 }
-
-
-

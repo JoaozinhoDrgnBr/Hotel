@@ -7,7 +7,9 @@ public class Cliente{
     private String email;
     
 
+
     public Cliente(String nome, String cpf, String telefone, String email){
+
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
