@@ -1,4 +1,6 @@
-import java.util.Date;
+package Models;
+
+import Interfaces.PagamentoStrategy;
 
 public class Pagamento{
     public enum Status{
@@ -9,15 +11,17 @@ public class Pagamento{
     private double preco;
     private Cliente cliente;
     private Status status;
-    private Date data;
+    private String data;
     private Reserva reserva;
+    private PagamentoStrategy strategy;
 
-    public Pagamento(double preco, Cliente cliente, Reserva reserva){
+    public Pagamento(double preco, Cliente cliente, Reserva reserva, String data, PagamentoStrategy strategy){
         this.preco = preco;
         this.cliente = cliente;
         this.reserva = reserva;
         this.status = Status.PENDENTE;
-        this.data = new Date();
+        this.data = data;
+        this.strategy = strategy;
     }
 
     public void setPreco(double preco){
@@ -44,11 +48,11 @@ public class Pagamento{
         return this.status;
     }
 
-    public void setData(Date data){
+    public void setData(String data){
         this.data = data;
     }
 
-    public Date getData(){
+    public String getData(){
         return this.data;
     }
 
@@ -60,11 +64,11 @@ public class Pagamento{
         return this.reserva;
     }
 
-    private void getDados(){
+    private String getDados(){
         return "Preco: " + this.preco + "Cliente: " + this.cliente.getNome() + "Status: " + this.status + "Data: " + this.data + "Reserva: " + this.reserva.getDados();
     }
 
     private void Pagar(){
-        // realizar o pagamento
+        strategy.Pagar(reserva.getPreco());
     }
 }

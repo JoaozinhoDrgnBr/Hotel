@@ -1,6 +1,8 @@
-public class GerenciadorServico{
+package Services;
 
-    public void MenuServico(){
+public class GerenciadorReserva{
+
+    public void MenuReserva(){
 
     }
 

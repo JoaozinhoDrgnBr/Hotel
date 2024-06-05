@@ -1,3 +1,5 @@
+package Models;
+
 public class Cliente{
     private String nome;
     private String cpf;
@@ -5,7 +7,7 @@ public class Cliente{
     private String email;
     
 
-    public Cliente(String nome, String cpf, String telefone, String email, String endereco, String cidade, String estado, string cep, string pais){
+    public Cliente(String nome, String cpf, String telefone, String email, String endereco, String cidade, String estado){
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -45,7 +47,7 @@ public class Cliente{
         return this.email;
     }
 
-    public void getDados(){
+    public String getDados(){
         return "Nome: " + this.nome + "CPF: " + this.cpf + "Telefone: " + this.telefone + "Email: " + this.email;
     }
 

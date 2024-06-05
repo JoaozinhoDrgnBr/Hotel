@@ -1,3 +1,5 @@
+package Models;
+
 public class Servico{
     private String descricao;
     private double preco;

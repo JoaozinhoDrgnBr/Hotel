@@ -1,8 +1,8 @@
+package Services;
 
+public class GerenciadorQuarto{
 
-public class GerenciadorCliente{
-
-    public void MenuCliente(){
+    public void MenuQuarto(){
 
     }
 
