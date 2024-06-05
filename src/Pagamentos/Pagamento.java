@@ -1,9 +1,11 @@
-package src.Pagamentos;
+package Pagamentos;
 
-import src.Pessoa.Cliente;
+import Observer.Observable;
+import Pessoa.Cliente;
 import src.Quartos.Reserva;
 import src.Interfaces.PagamentoStrategy;
-public class Pagamento{
+
+public class Pagamento extends Observable {
     public enum Status{
         PENDENTE,
         PAGO,
@@ -42,7 +44,9 @@ public class Pagamento{
     }
 
     public void setStatus(Status status){
+        addObserver(this.cliente); //tem que ver isso aqui se vai dar certo se ele fica adicionando vários cliente ou não
         this.status = status;
+        notifyObservers(String.valueOf(status));
     }
 
     public Status getStatus(){

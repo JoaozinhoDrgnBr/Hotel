@@ -1,6 +1,8 @@
-package src.Pessoa;
+package Pessoa;
 
-public class Cliente{
+import Interfaces.Observer;
+
+public class Cliente implements Observer {
     private String nome;
     private String cpf;
     private String telefone;
@@ -55,5 +57,10 @@ public class Cliente{
 
     private void Cadastrar(){
         // cadastrar um cliente no sistema
+    }
+
+    @Override
+    public void update(String status) {
+        System.out.println("Cliente " + nome + " foi notificado via email. Status do pagamento: " + status);
     }
 }
