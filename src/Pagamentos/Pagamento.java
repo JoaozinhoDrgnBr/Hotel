@@ -1,9 +1,9 @@
-package Pagamentos;
+package src.Pagamentos;
 
-import Observer.Observable;
-import Pessoa.Cliente;
-import src.Quartos.Reserva;
+import src.Observer.Observable;
+import src.Pessoa.Cliente;
 import src.Interfaces.PagamentoStrategy;
+import src.Quartos.Reserva;
 
 public class Pagamento extends Observable {
     public enum Status{

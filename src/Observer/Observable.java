@@ -1,7 +1,6 @@
-package Observer;
+package src.Observer;
 
-import Interfaces.Observer;
-
+import src.Interfaces.Observer;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package Pessoa;
+package src.Pessoa;
 
-import Interfaces.Observer;
+import src.Interfaces.Observer;
 
 public class Cliente implements Observer {
     private String nome;

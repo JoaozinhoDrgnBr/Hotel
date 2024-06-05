@@ -1,4 +1,4 @@
-package Pagamentos;
+package src.Pagamentos;
 
 import src.Interfaces.PagamentoStrategy;
 
